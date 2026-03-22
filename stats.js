@@ -5,58 +5,78 @@ module.exports = async function runStatsExtractor(page) {
   // -------------------------------
   console.log("🚀 Starting Phase 1: Profile ID Extraction (No Club)");
 
-  const startPage = 1; //change
-  const endPage = 296; //change
-  const tierId = 10; //change. tire 10 is 50+
+  // 🔧 SURGICAL EDIT #1: MULTIPLE RANGES
+  const ranges = [
+    { tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
+    { tierId: 8, startPage: 1, endPage: 91 },
+    { tierId: 7, startPage: 1, endPage: 126 },
+    { tierId: 6, startPage: 1, endPage: 144 },
+    { tierId: 5, startPage: 1, endPage: 191 },
+    { tierId: 4, startPage: 1, endPage: 193 },
+    //{ tierId: 9, startPage: 1, endPage: 150 },
+    // add/remove ranges as needed
+  ];
+
   let allProfiles = [];
 
   await page.goto('https://v3.g.ladypopular.com', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(4000);
 
-  console.log(`🔍 Scanning pages ${startPage} → ${endPage}`);
+  // 🔧 SURGICAL EDIT #2: LOOP OVER RANGES
+  for (const { tierId, startPage, endPage } of ranges) {
+    console.log(`\n🧩 Running range: Tier ${tierId} | Pages ${startPage} → ${endPage}`);
+    console.log(`🔍 Scanning pages ${startPage} → ${endPage}`);
 
-  for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
-    console.log(`📄 Processing page ${currentPage}...`);
+    for (let currentPage = startPage; currentPage <= endPage; currentPage++) {
+      console.log(`📄 Processing page ${currentPage} (Tier ${tierId})...`);
 
-    try {
-      const profilesOnPage = await page.evaluate(async ({ currentPage, tierId }) => {
-        const res = await fetch('/ajax/ranking/players.php', {
-          method: 'POST',
-          body: new URLSearchParams({ action: 'getRanking', page: currentPage.toString(), tierId: tierId.toString() }),
-          credentials: 'same-origin'
-        });
-        const data = await res.json();
-        if (!data.html) return [];
+      try {
+        const profilesOnPage = await page.evaluate(async ({ currentPage, tierId }) => {
+          const res = await fetch('/ajax/ranking/players.php', {
+            method: 'POST',
+            body: new URLSearchParams({
+              action: 'getRanking',
+              page: currentPage.toString(),
+              tierId: tierId.toString()
+            }),
+            credentials: 'same-origin'
+          });
 
-        const container = document.createElement('div');
-        container.innerHTML = data.html;
-        const rows = container.querySelectorAll('tr');
-        const results = [];
+          const data = await res.json();
+          if (!data.html) return [];
 
-        rows.forEach(row => {
-          const profileLink = row.querySelector('.player-avatar a');
-          const guildCell = row.querySelector('.ranking-player-guild');
-          if (!profileLink || !guildCell) return;
-          if (guildCell.querySelector('a')) return; // if guild has <a>, player IS in a club
+          const container = document.createElement('div');
+          container.innerHTML = data.html;
+          const rows = container.querySelectorAll('tr');
+          const results = [];
 
-          const href = profileLink.getAttribute('href');
-          const idMatch = href.match(/lady_id=(\d+)/);
-          if (!idMatch) return;
-          const nameEl = row.querySelector('.player-avatar-name');
-          const name = nameEl ? nameEl.textContent.trim() : 'Unknown';
-          results.push({ ladyId: idMatch[1], name });
-        });
+          rows.forEach(row => {
+            const profileLink = row.querySelector('.player-avatar a');
+            const guildCell = row.querySelector('.ranking-player-guild');
+            if (!profileLink || !guildCell) return;
+            if (guildCell.querySelector('a')) return; // player IS in a club
 
-        return results;
-      }, { currentPage, tierId });
+            const href = profileLink.getAttribute('href');
+            const idMatch = href.match(/lady_id=(\d+)/);
+            if (!idMatch) return;
 
-      console.log(`   🎯 Found ${profilesOnPage.length} profiles without club`);
-      allProfiles.push(...profilesOnPage);
-    } catch (err) {
-      console.log(`❌ Error on page ${currentPage}: ${err.message}`);
+            const nameEl = row.querySelector('.player-avatar-name');
+            const name = nameEl ? nameEl.textContent.trim() : 'Unknown';
+
+            results.push({ ladyId: idMatch[1], name });
+          });
+
+          return results;
+        }, { currentPage, tierId });
+
+        console.log(`   🎯 Found ${profilesOnPage.length} profiles without club`);
+        allProfiles.push(...profilesOnPage);
+      } catch (err) {
+        console.log(`❌ Error on page ${currentPage}: ${err.message}`);
+      }
+
+      await page.waitForTimeout(2000);
     }
-
-    await page.waitForTimeout(2000);
   }
 
   console.log("✅ Phase 1 Complete");
@@ -87,7 +107,11 @@ module.exports = async function runStatsExtractor(page) {
       const res = await page.evaluate(async ({ ladyId, message }) => {
         const response = await fetch('/ajax/guilds.php', {
           method: 'POST',
-          body: new URLSearchParams({ type: 'invite', lady: ladyId, message }),
+          body: new URLSearchParams({
+            type: 'invite',
+            lady: ladyId,
+            message
+          }),
           credentials: 'same-origin'
         });
         return await response.json();
