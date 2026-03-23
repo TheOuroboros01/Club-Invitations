@@ -95,7 +95,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hi sweetheart! We’d love to invite you to our club. We’re very carefree, and you’re free to play in your own style with absolutely no pressure. No donations are needed, you can just join us and enjoy the game`;
+  const inviteMessage = `Hi sweetheart! I’d love to invite you to my club. It's very carefree, and you’re free to play in your own style with absolutely no pressure. No donations are needed, you can just join and enjoy the game`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
