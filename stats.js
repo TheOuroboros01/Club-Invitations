@@ -7,12 +7,13 @@ module.exports = async function runStatsExtractor(page) {
 
   // 🔧 SURGICAL EDIT #1: MULTIPLE RANGES
   const ranges = [
-    { tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
-    { tierId: 8, startPage: 1, endPage: 91 },
-    { tierId: 7, startPage: 1, endPage: 126 },
-    { tierId: 6, startPage: 1, endPage: 144 },
-    { tierId: 5, startPage: 1, endPage: 191 },
+    //{ tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
+    //{ tierId: 8, startPage: 1, endPage: 91 },
+    //{ tierId: 7, startPage: 1, endPage: 126 },
+    //{ tierId: 6, startPage: 1, endPage: 144 },
+    //{ tierId: 5, startPage: 1, endPage: 191 },
     { tierId: 4, startPage: 1, endPage: 193 },
+    { tierId: 3, startPage: 1, endPage: 298 },
     //{ tierId: 9, startPage: 1, endPage: 150 },
     // add/remove ranges as needed
   ];
