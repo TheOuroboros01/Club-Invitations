@@ -12,8 +12,9 @@ module.exports = async function runStatsExtractor(page) {
     //{ tierId: 7, startPage: 1, endPage: 126 },
     //{ tierId: 6, startPage: 1, endPage: 144 },
     //{ tierId: 5, startPage: 1, endPage: 191 },
-    { tierId: 4, startPage: 1, endPage: 193 },
-    { tierId: 3, startPage: 1, endPage: 298 },
+    //{ tierId: 4, startPage: 1, endPage: 193 },
+    //{ tierId: 3, startPage: 1, endPage: 298 },
+    { tierId: 5, startPage: 1, endPage: 1 },
     // add/remove ranges as needed
   ];
 
@@ -89,9 +90,9 @@ module.exports = async function runStatsExtractor(page) {
 
   // ✏️ Add names here (case-insensitive)
   const excludedNames = [
-    "Anna",
-    "QueenBee",
-    "Miss Dior"
+    "irvin",
+    "Ariana_Moon",
+    "Ivanka999"
   ];
 
   // Normalize exclusion list once
@@ -134,7 +135,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hi sweetheart! I’d love to invite you to my club. It's very carefree, and you’re free to play in your own style with absolutely no pressure. No donations are needed, you can just join and enjoy the game`;
+  const inviteMessage = `Hi! Would you like to join our club.`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
