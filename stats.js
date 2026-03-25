@@ -14,7 +14,6 @@ module.exports = async function runStatsExtractor(page) {
     //{ tierId: 5, startPage: 1, endPage: 191 },
     { tierId: 4, startPage: 1, endPage: 193 },
     { tierId: 3, startPage: 1, endPage: 298 },
-    //{ tierId: 9, startPage: 1, endPage: 150 },
     // add/remove ranges as needed
   ];
 
@@ -83,13 +82,53 @@ module.exports = async function runStatsExtractor(page) {
   console.log("✅ Phase 1 Complete");
   console.log(`👭 Total profiles without club: ${allProfiles.length}`);
   console.log("📋 Sample output:", allProfiles.slice(0, 5));
-  const allLadies = allProfiles;
+
+  // =====================================================
+  // 🔒 SURGICAL ADDITION: NAME-BASED EXCLUSION FILTER
+  // =====================================================
+
+  // ✏️ Add names here (case-insensitive)
+  const excludedNames = [
+    "Anna",
+    "QueenBee",
+    "Miss Dior"
+  ];
+
+  // Normalize exclusion list once
+  const exclusionSet = new Set(
+    excludedNames.map(name => name.toLowerCase().trim())
+  );
+
+  const excludedLadies = [];
+  const filteredLadies = [];
+
+  for (const lady of allProfiles) {
+    const normalizedName = lady.name.toLowerCase().trim();
+
+    if (exclusionSet.has(normalizedName)) {
+      excludedLadies.push(lady);
+    } else {
+      filteredLadies.push(lady);
+    }
+  }
+
+  // 🐞 Debug logging (read-only, safe)
+  if (excludedLadies.length > 0) {
+    console.log(`🚫 Excluded ${excludedLadies.length} ladies from invites:`);
+    excludedLadies.forEach(lady => {
+      console.log(`   ❌ ${lady.name} (ID: ${lady.ladyId})`);
+    });
+  } else {
+    console.log("🚫 No ladies excluded by name filter");
+  }
+
+  const allLadies = filteredLadies;
 
   // -------------------------------
   // Phase 2: Sending Invites
   // -------------------------------
   if (allLadies.length === 0) {
-    console.log("❌ No ladies to invite. Phase 3 skipped.");
+    console.log("❌ No ladies to invite after filtering. Phase skipped.");
     return;
   }
 
@@ -99,6 +138,7 @@ module.exports = async function runStatsExtractor(page) {
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
+
     console.log(`📤 Sending invite ${i + 1}/${allLadies.length}`);
     console.log(`   👩 Name: ${lady.name}`);
     console.log(`   🆔 Lady ID: ${lady.ladyId}`);
@@ -119,6 +159,7 @@ module.exports = async function runStatsExtractor(page) {
       }, { ladyId: lady.ladyId, message: inviteMessage });
 
       console.log(`   📝 Response: ${JSON.stringify(res)}`);
+
       if (res.status === 1) {
         console.log(`✅ Invite sent to ${lady.name} (${lady.ladyId})`);
       } else {
