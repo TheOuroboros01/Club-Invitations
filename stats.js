@@ -14,7 +14,7 @@ module.exports = async function runStatsExtractor(page) {
     //{ tierId: 5, startPage: 1, endPage: 191 },
     //{ tierId: 4, startPage: 1, endPage: 193 },
     //{ tierId: 3, startPage: 1, endPage: 298 },
-    { tierId: 10, startPage: 1, endPage: 168 },
+    { tierId: 10, startPage: 1, endPage: 168 }, // lvl 60 and above
     // add/remove ranges as needed
   ];
 
@@ -90,9 +90,21 @@ module.exports = async function runStatsExtractor(page) {
 
   // ✏️ Add names here (case-insensitive)
   const excludedNames = [
-    "irvin",
-    "Ariana_Moon",
-    "Ivanka999"
+    "Nata_",//join n left
+    "Kaisee",//rej
+    "Raquel"//rej
+    "Serena" //rej
+    "Athenaya"//jon n left, rej
+     "Whis"//rej
+     "Insannie"//rej
+     "Loreta"//rej
+     "Anouk C."//rej twice
+     "Louise B"//rej twice
+     "JеωеƖ"//rej
+     "Loki"//rej
+  "Wiggy",
+    "JoAnne",
+    "Matska",
   ];
 
   // Normalize exclusion list once
