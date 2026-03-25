@@ -95,19 +95,19 @@ module.exports = async function runStatsExtractor(page) {
     "Raquel",//rej
     "Serena", //rej
     "Athenaya",//jon n left, rej
-     "Whis",//rej
-     "Insannie",//rej
-     "Loreta",//rej
-     "Anouk C.",//rej twice
-     "Louise B",//rej twice
-     "JеωеƖ",//rej w/ msg
-     "Loki",//rej
-  "Wiggy",
+    "Whis",//rej
+    "Insannie",//rej
+    "Loreta",//rej
+    "Anouk C.",//rej twice
+    "Louise B",//rej twice
+    "JеωеƖ",//rej w/ msg
+    "Loki",//rej
+    "Wiggy",
     "JoAnne", //rej w/ msg
     "Matska",
     "Ива Лени",// universe team president - helper friend
     "zani ali",//kicked - partial activity - not joining fights
-    "Mikasapisame"//kicked - partial activity - not joining fights
+    "Mikasapisame",//kicked - partial activity - not joining fights
     "FΣΛЯLΣSS",//kicked - partial activity - not joining fights
     /*"_",//
     "_",//
