@@ -14,7 +14,7 @@ module.exports = async function runStatsExtractor(page) {
     //{ tierId: 5, startPage: 1, endPage: 191 },
     //{ tierId: 4, startPage: 1, endPage: 193 },
     //{ tierId: 3, startPage: 1, endPage: 298 },
-    { tierId: 5, startPage: 1, endPage: 1 },
+    { tierId: 10, startPage: 1, endPage: 168 },
     // add/remove ranges as needed
   ];
 
