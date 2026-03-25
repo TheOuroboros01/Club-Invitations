@@ -171,7 +171,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hi! Would you like to join our club.`;
+  const inviteMessage = `We’d love to invite you to join our club sweetheart ♥ Donations are fully voluntary ♥ Just participate in club fights whenever you can ♥ Joining us boosts your popularity skills by 50% ♥ We’ll be winning all 5 club trophies very soon, providing extra in-game benefits ♥ We respect diversity in regions, languages, and gameplay styles ♥ We’re a friendly, easy-going bunch! ♥ Feel free to apply even if we are full ♥ Hope to see you with us! :)`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
