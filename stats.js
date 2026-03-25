@@ -100,11 +100,12 @@ module.exports = async function runStatsExtractor(page) {
      "Loreta"//rej
      "Anouk C."//rej twice
      "Louise B"//rej twice
-     "JеωеƖ"//rej
+     "JеωеƖ"//rej w/ msg
      "Loki"//rej
   "Wiggy",
-    "JoAnne",
+    "JoAnne", //rej w/ msg
     "Matska",
+    "Ива Лени",// universe team president - helper friend
   ];
 
   // Normalize exclusion list once
