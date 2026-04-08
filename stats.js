@@ -7,14 +7,14 @@ module.exports = async function runStatsExtractor(page) {
 
   // 🔧 SURGICAL EDIT #1: MULTIPLE RANGES
   const ranges = [
-    //{ tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
-    //{ tierId: 8, startPage: 1, endPage: 91 },
-    //{ tierId: 7, startPage: 1, endPage: 126 },
-    //{ tierId: 6, startPage: 1, endPage: 144 },
+    { tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
+    { tierId: 8, startPage: 1, endPage: 91 },
+    { tierId: 7, startPage: 1, endPage: 126 },
+    { tierId: 6, startPage: 1, endPage: 144 },
     //{ tierId: 5, startPage: 1, endPage: 191 },
     //{ tierId: 4, startPage: 1, endPage: 193 },
     //{ tierId: 3, startPage: 1, endPage: 298 },
-    { tierId: 10, startPage: 1, endPage: 168 }, // lvl 60 and above
+    //{ tierId: 10, startPage: 1, endPage: 168 }, // lvl 60 and above
     // add/remove ranges as needed
   ];
 
@@ -171,7 +171,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `We’d love to invite you to join our club sweetheart ♥ Donations are fully voluntary ♥ Just participate in club fights whenever you can ♥ Joining us boosts your popularity skills by 50% ♥ We’ll be winning all 5 club trophies very soon, providing extra in-game benefits ♥ We respect diversity in regions, languages, and gameplay styles ♥ We’re a friendly, easy-going bunch! ♥ Feel free to apply even if we are full ♥ Hope to see you with us! :)`;
+  const inviteMessage = `Hi hun! I’d love to invite you to join our club! :)`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
