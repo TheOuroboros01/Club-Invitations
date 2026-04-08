@@ -11,8 +11,8 @@ module.exports = async function runStatsExtractor(page) {
     { tierId: 8, startPage: 1, endPage: 91 },
     { tierId: 7, startPage: 1, endPage: 126 },
     { tierId: 6, startPage: 1, endPage: 144 },
-    //{ tierId: 5, startPage: 1, endPage: 191 },
-    //{ tierId: 4, startPage: 1, endPage: 193 },
+    { tierId: 5, startPage: 1, endPage: 191 },
+    { tierId: 4, startPage: 1, endPage: 193 },
     //{ tierId: 3, startPage: 1, endPage: 298 },
     //{ tierId: 10, startPage: 1, endPage: 168 }, // lvl 60 and above
     // add/remove ranges as needed
@@ -171,7 +171,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hi hun! I would love to invite you to join our club! :)`;
+  const inviteMessage = `Hello. We would be happy to have you in our club.`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
