@@ -171,7 +171,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hi hun! I’d love to invite you to join our club! :)`;
+  const inviteMessage = `Hi hun! I would love to invite you to join our club! :)`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
