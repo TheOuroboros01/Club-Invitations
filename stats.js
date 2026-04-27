@@ -171,7 +171,7 @@ module.exports = async function runStatsExtractor(page) {
 
   console.log(`🚀 Starting Phase 3: Sending invites to ${allLadies.length} ladies`);
 
-  const inviteMessage = `Hello. We would be happy to have you in our club.`;
+  const inviteMessage = `Hi sweetheart! <3 Would you like to join our club? 😊 We do not have any fee, our club stats are maxed out, and we have some of the best trophies in the game which really help gameplay ✨ We only do casual club fights, and we are very lenient about members activity too ♥ We are pretty laid back and a friendly bunch. It would honestly be a pleasure to have you with us ^^`;
 
   for (let i = 0; i < allLadies.length; i++) {
     const lady = allLadies[i];
