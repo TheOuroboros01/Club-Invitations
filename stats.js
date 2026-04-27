@@ -7,14 +7,14 @@ module.exports = async function runStatsExtractor(page) {
 
   // 🔧 SURGICAL EDIT #1: MULTIPLE RANGES
   const ranges = [
-    { tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
-    { tierId: 8, startPage: 1, endPage: 91 },
-    { tierId: 7, startPage: 1, endPage: 126 },
-    { tierId: 6, startPage: 1, endPage: 144 },
-    { tierId: 5, startPage: 1, endPage: 191 },
-    { tierId: 4, startPage: 1, endPage: 193 },
+    //{ tierId: 9, startPage: 1, endPage: 85 }, // tier 10 (50+)
+    //{ tierId: 8, startPage: 1, endPage: 91 },
+    //{ tierId: 7, startPage: 1, endPage: 126 },
+    //{ tierId: 6, startPage: 1, endPage: 144 },
+    //{ tierId: 5, startPage: 1, endPage: 191 },
+    //{ tierId: 4, startPage: 1, endPage: 193 },
     //{ tierId: 3, startPage: 1, endPage: 298 },
-    //{ tierId: 10, startPage: 1, endPage: 168 }, // lvl 60 and above
+    { tierId: 10, startPage: 1, endPage: 91 }, // lvl 69 and above
     // add/remove ranges as needed
   ];
 
@@ -109,8 +109,8 @@ module.exports = async function runStatsExtractor(page) {
     "zani ali",//kicked - partial activity - not joining fights
     "Mikasapisame",//kicked - partial activity - not joining fights
     "FΣΛЯLΣSS",//kicked - partial activity - not joining fights
-    /*"_",//
-    "_",//
+    "Luna",// rej
+    /* "_",//
     "_",//
     "_",//
     "_",//
